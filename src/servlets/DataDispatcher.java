@@ -25,14 +25,14 @@ public class DataDispatcher extends HttpServlet {
 	 */
 	@Serial
 	private static final long serialVersionUID = 2319314504958811913L;
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			   throws ServletException, IOException {
-		
+
 		doPost(request, response);
 	}
 
-	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			   throws ServletException, IOException {
 		ListUsuarios listaUsuarios = new ListUsuarios();

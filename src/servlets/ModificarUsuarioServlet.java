@@ -21,6 +21,7 @@ import java.util.List;
 public class ModificarUsuarioServlet extends HttpServlet {
     ListUsuarios listUsuarios = new ListUsuarios();
     List<String> errores = new ArrayList<>();
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dniStr = request.getParameter("dni");
 
@@ -42,6 +43,7 @@ public class ModificarUsuarioServlet extends HttpServlet {
             response.sendRedirect("showDataUser");
         }
     }
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         errores.clear();// Limpiar la lista de errores
 

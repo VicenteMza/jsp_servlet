@@ -20,13 +20,13 @@ import java.util.List;
 public class CrearUsuarioServlet extends HttpServlet {
     ListUsuarios listUsuarios = new ListUsuarios();
     List<String> errores = new ArrayList<>();
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Si se realiza una solicitud GET a este servlet, simplemente redirige a la página de inicio
         response.sendRedirect("crearUsuario.jsp");
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         errores.clear();// Limpiar la lista de errores

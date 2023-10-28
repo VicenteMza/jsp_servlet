@@ -12,10 +12,10 @@ import java.io.IOException;
 @WebServlet("/eliminarUsuarioServlet")
 public class EliminarUsuarioServlet extends HttpServlet {
     ListUsuarios listUsuarios = new ListUsuarios();
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws  ServletException, IOException{
         String dnistr = request.getParameter("dni");
 
