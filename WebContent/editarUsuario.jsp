@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List" %>
 <%@ page import="model.Usuario" %>
 <%@ page import="model.Profesion" %>
 <html>
@@ -30,6 +31,19 @@
         </c:if>
         <a href="showDataUser"><button type="button">Volver</button></a>
     </form>
+
+    <!-- Verificar si hay un mensaje de error-->
+                        <% List<String> errores = (List<String>) request.getAttribute("errores");
+                                if (errores != null && !errores.isEmpty()) {
+                                %>
+                                <script>
+                                    var mensajeError = "Errores:\n";
+                                    <c:forEach var="error" items="${errores}">
+                                        mensajeError += "<c:out value='${error}' />\n";
+                                    </c:forEach>
+                                    alert(mensajeError);
+                                </script>
+                                <% } %>
 </body>
 
 </html>
