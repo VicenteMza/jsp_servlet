@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ListUsuarios {
     private static List<Usuario> listaUsuarios = new ArrayList<>();
@@ -36,7 +37,12 @@ public class ListUsuarios {
                 .orElse(null);
     }
 
-    public void deleteUserByDni(int dni) {
-        listaUsuarios.removeIf(u -> u.getDni() == dni);
+    public Usuario deleteUserByDni(int dni) {
+        Optional<Usuario> usuarioEliminado = listaUsuarios
+                .stream()
+                .filter(u -> u.getDni() == dni)
+                .findFirst();
+        usuarioEliminado.ifPresent(u -> listaUsuarios.remove(u));
+        return usuarioEliminado.orElse(null);
     }
 }
