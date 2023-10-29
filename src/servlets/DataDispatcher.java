@@ -1,14 +1,8 @@
 package servlets;
 
 import model.ListUsuarios;
-import model.Usuario;
-import model.Profesion;
-
 import java.io.IOException;
 import java.io.Serial;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

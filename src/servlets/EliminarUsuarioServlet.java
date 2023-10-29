@@ -1,7 +1,9 @@
 package servlets;
 
 import model.ListUsuarios;
+import model.Usuario;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +20,21 @@ public class EliminarUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws  ServletException, IOException{
         String dnistr = request.getParameter("dni");
+        Usuario usuario;
 
         try {
             int dni = Integer.parseInt(dnistr);
 
             if (listUsuarios.existeDNI(dni)){
-                listUsuarios.deleteUserByDni(dni);
+                usuario = listUsuarios.deleteUserByDni(dni);
+                request.setAttribute("mensajeEliminacion", "Usuario: " + usuario.getNombre()
+                        + " "+ usuario.getApellido() + " ELIMINADO.");
+                request.setAttribute("infoData", listUsuarios.obtenerTodosLosUsuarios());
             }
-            response.sendRedirect("showDataUser");
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("showDataUser.jsp");
+            dispatcher.forward(request,response);
+
         } catch (NumberFormatException e){
             response.sendRedirect("showDataUser");
         }
